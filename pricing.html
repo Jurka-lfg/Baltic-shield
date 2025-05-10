@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baltic Shield</title>
     <style>
+      /* General Styles */
       body {
         margin: 0;
         display: flex;
-        flex-direction: column; /* Stack navbar and content vertically */
-        height: 100vh; /* Full viewport height */
+        flex-direction: column;
+        height: 100vh;
         background: linear-gradient(to bottom, #f5f5f5, #e0f7fa);
-        font-family: Helvetica, Arial, sans-serif; /* Added Helvetica font */
+        font-family: Helvetica, Arial, sans-serif;
         scroll-behavior: smooth;
         opacity: 1;
-        transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+        transition: opacity 0.5s ease-in-out;
       }
       body.fade-out {
-        opacity: 1; /* Fully visible */
+        opacity: 1;
       }
+
+      /* Navbar Styles */
       .navbar {
         width: 100%;
         max-width: 1440px;
         background-color: white;
-        padding: 6px 18px; /* Increased padding for a larger navbar */
+        padding: 6px 18px;
         position: sticky;
         top: 0;
         left: 0;
@@ -34,36 +37,30 @@
         z-index: 1000;
         margin: 0 auto;
       }
-
       .logo {
         display: flex;
         align-items: center;
       }
-
       .logo img {
-        width: 140px; /* Increased logo size */
+        width: 140px;
         height: auto;
         margin-right: 10px;
       }
-
       .logo-text {
-        font-size: 18px; /* Increased font size for the logo text */
+        font-size: 18px;
         font-weight: bold;
         color: #1c284c;
       }
-
       .nav-links {
         list-style: none;
-        display: flex; /* Align items horizontally */
-        gap: 30px; /* Spacing between links */
+        display: flex;
+        gap: 30px;
         margin: 0;
         padding: 0;
       }
-
       .nav-links li {
-        display: inline-block; /* Ensure items are inline */
+        display: inline-block;
       }
-
       .nav-links a {
         text-decoration: none;
         color: #1c284c;
@@ -71,15 +68,15 @@
         font-weight: 500;
         transition: color 0.3s;
       }
-
       .nav-links a:hover {
         color: #e68900;
       }
+
+      /* Dropdown Styles */
       .dropdown {
         position: relative;
         display: inline-block;
       }
-
       .dropdown-button {
         text-decoration: none;
         color: black;
@@ -87,11 +84,9 @@
         cursor: pointer;
         transition: color 0.3s;
       }
-
       .dropdown-button:hover {
         color: #ff9800;
       }
-
       .dropdown-content {
         display: none;
         position: absolute;
@@ -101,7 +96,6 @@
         z-index: 1;
         border-radius: 5px;
       }
-
       .dropdown-content a {
         color: black;
         padding: 10px 15px;
@@ -109,134 +103,115 @@
         display: block;
         font-size: 14px;
       }
-
       .dropdown-content a:hover {
         background-color: #f1f1f1;
       }
-
       .dropdown:hover .dropdown-content {
         display: block;
       }
+
+      /* Content Wrapper Styles */
       .wrapper {
-        text-align: center; /* Center the content inside the wrapper */
-        flex: 1; /* Allow the wrapper to take up the remaining space */
-        padding: 40px; /* Increased padding for better spacing */
+        text-align: center;
+        flex: 1;
+        padding: 40px;
       }
-
-      .feature-table {
-        margin: 0 auto; /* Center the table horizontally */
-        width: 90%; /* Adjust table width */
-        font-size: 18px; /* Increased font size for table content */
-      }
-
       .row {
         padding: 48px 24px;
         text-align: center;
       }
-
       .row:nth-child(odd) {
         background: linear-gradient(to bottom, #ffffff, #f5f5f5);
       }
-
       .row:nth-child(even) {
         background: linear-gradient(to bottom, #c9e5fd, #e0f2ff);
       }
 
+      /* Typography Styles */
       h2 {
         font-size: 28px;
         margin-bottom: 20px;
       }
-
       ul {
         list-style: none;
         padding: 0;
         text-align: left;
         display: inline-block;
       }
-
       ul li {
         margin: 10px 0;
         font-size: 18px;
       }
-
       a {
         color: #1c284c;
         text-decoration: none;
         font-weight: bold;
       }
-
       a:hover {
         color: #e68900;
       }
 
-      .icon {
-        width: 30px; /* Increased the size of the icons */
-        height: 30px;
-        vertical-align: middle; /* Align icons with text */
+      /* Table Styles */
+      .feature-table {
+        margin: 0 auto;
+        width: 90%;
+        font-size: 18px;
       }
-
       table {
-        width: 100%; /* Make the table take full width */
-        border: 2px solid black; /* Add a border around the table */
-        border-collapse: collapse; /* Collapse borders for a clean look */
+        width: 100%;
+        border: 2px solid black;
+        border-collapse: collapse;
       }
-
       th,
       td {
-        border: 1px solid black; /* Add borders to table cells */
-        padding: 15px; /* Increased padding for better readability */
-        text-align: center; /* Center-align text and icons */
+        border: 1px solid black;
+        padding: 15px;
+        text-align: center;
       }
-
       th {
-        background: linear-gradient(
-          to bottom,
-          #c9e5fd,
-          #e0f2ff
-        ); /* Gradient for odd rows */
-        color: black; /* White text for the header */
-        font-size: 20px; /* Increased font size for header text */
+        background: linear-gradient(to bottom, #c9e5fd, #e0f2ff);
+        color: black;
+        font-size: 20px;
       }
-
       tr:nth-child(even) {
-        background-color: #f9f9f9; /* Add alternating row colors */
+        background-color: #f9f9f9;
+      }
+      tr:nth-child(odd) {
+        background-color: #ffffff;
       }
 
-      tr:nth-child(odd) {
-        background-color: #ffffff; /* White background for odd rows */
-      }
-      .white-box {
-        background-color: white; /* White background */
-        padding: 20px; /* Add padding inside the box */
-        border: 1px solid #ddd; /* Light gray border */
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-        max-width: 800px; /* Limit the width of the box */
-        margin: 0 auto; /* Center the box horizontally */
-        text-align: left; /* Align text to the left */
-      }
+      /* Box Styles */
+      .white-box,
+      .plan-box,
       .payment-panel {
         background-color: white;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
+        max-width: 800px;
         margin: 0 auto;
         text-align: left;
       }
+      .plan-box {
+        max-width: 400px;
+        margin-left: 350px;
+        margin-right: -200px;
+      }
+      .payment-panel {
+        max-width: 500px;
+      }
 
+      /* Form Styles */
       .form-group {
         margin-bottom: 15px;
       }
-
       .form-group label {
         display: block;
         font-size: 14px;
         font-weight: bold;
         margin-bottom: 5px;
       }
-
       .form-group input {
         width: 100%;
         padding: 10px;
@@ -245,69 +220,27 @@
         border-radius: 5px;
         box-sizing: border-box;
       }
-
       .form-row {
         display: flex;
         gap: 10px;
       }
-
       .form-row .form-group {
         flex: 1;
       }
+
+      /* Payment Container Styles */
       .payment-container {
         display: flex;
-        gap: 50px; /* Space between the plan box and payment form */
-        justify-content: center; /* Center the payment container */
-        align-items: flex-start; /* Align items at the top */
-        flex-wrap: wrap; /* Ensure responsiveness for smaller screens */
-        margin-top: 35px; /* Add spacing between the header and the container */
+        gap: 50px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 35px;
       }
-
-      .plan-box,
-      .payment-panel {
-        flex: 1; /* Allow both elements to take up equal space */
-        max-width: 400px; /* Limit the width of each box */
-      }
-
-      .plan-box {
-        background-color: white;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-left: 350px;
-        margin-right: -200px;
-        text-align: left;
-      }
-
-      .payment-panel {
-        background-color: white;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: left;
-      }
-
-      .plan-box h3 {
-        font-size: 20px;
-        margin-bottom: 15px;
-      }
-
-      .plan-box select {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-
       .price-details p {
         font-size: 16px;
         margin: 5px 0;
       }
-
       .price-details strong {
         font-size: 18px;
       }
@@ -322,37 +255,33 @@
         transition: background-color 0.3s;
         width: 100%;
       }
-
       .pay-button:hover {
         background-color: #e68900;
       }
-      /* Modal Background */
+
+      /* Modal Styles */
       .modal {
-        display: none; /* Hidden by default */
+        display: none;
         position: fixed;
-        z-index: 1000; /* Ensure it appears above other content */
+        z-index: 1000;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        background-color: rgba(0, 0, 0, 0.5);
       }
-
-      /* Modal Content */
       .modal-content {
         background-color: white;
-        margin: 15% auto; /* Center the modal vertically and horizontally */
+        margin: 15% auto;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 10px;
         width: 80%;
-        max-width: 400px; /* Limit the modal width */
+        max-width: 400px;
         text-align: center;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-
-      /* Close Button */
       .close-button {
         color: #aaa;
         float: right;
@@ -360,14 +289,11 @@
         font-weight: bold;
         cursor: pointer;
       }
-
       .close-button:hover,
       .close-button:focus {
         color: black;
         text-decoration: none;
       }
-
-      /* Modal OK Button */
       #modal-ok-button {
         margin-top: 20px;
         background-color: #1c284c;
@@ -379,7 +305,6 @@
         cursor: pointer;
         transition: background-color 0.3s;
       }
-
       #modal-ok-button:hover {
         background-color: #e68900;
       }

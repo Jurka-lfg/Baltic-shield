@@ -5,56 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baltic Shield</title>
     <style>
+      /* General Styles */
       body {
         display: flex;
         flex-direction: column;
         margin: 0;
-        background: linear-gradient(
-          to bottom,
-          #f5f5f5,
-          #e0f7fa
-        ); /* White to light cyan */
-        font-family: Helvetica, Arial, sans-serif; /* Added Helvetica font */
+        background: linear-gradient(to bottom, #f5f5f5, #e0f7fa);
+        font-family: Helvetica, Arial, sans-serif;
         scroll-behavior: smooth;
         opacity: 1;
-        transition: opacity 0.5s ease-in-out; /* Smooth fade-in and fade-out */
+        transition: opacity 0.5s ease-in-out;
       }
       body.fade-out {
-        opacity: 0; /* Fade out effect */
+        opacity: 0;
       }
+
+      /* Navbar Styles */
       .navbar {
         width: 100%;
         max-width: 1440px;
         background-color: white;
-        padding: 6px 18px; /* Reduced padding to make the navbar smaller */
+        padding: 6px 18px;
         position: sticky;
         top: 0;
         left: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Adjusted shadow size */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         margin: 0 auto;
       }
-      .logo {
+      .navbar .logo {
         display: flex;
-        align-items: center; /* Align logo and text vertically */
+        align-items: center;
       }
-      .logo-text {
-        font-size: 18px; /* Adjust font size for the text */
-        font-weight: bold;
-        color: #0d3ecc; /* Match the theme color */
-      }
-      .logo img {
-        width: 140px; /* Adjust logo size */
-        height: auto;
-        margin-right: 10px; /* Add spacing between logo and text */
-      }
-
       .navbar .logo img {
-        width: 140px; /* Reduced logo size */
+        width: 140px;
         height: auto;
+        margin-right: 10px;
       }
       .navbar ul {
         list-style: none;
@@ -64,12 +53,12 @@
         align-items: center;
       }
       .navbar ul li {
-        margin: 0 15px; /* Reduced spacing between links */
+        margin: 0 15px;
       }
       .navbar ul li a {
         text-decoration: none;
         color: #1c284c;
-        font-size: 16px; /* Reduced font size */
+        font-size: 16px;
         transition: color 0.3s;
       }
       .navbar ul li a:hover {
@@ -79,7 +68,6 @@
         position: relative;
         display: inline-block;
       }
-
       .dropdown-button {
         text-decoration: none;
         color: black;
@@ -87,11 +75,9 @@
         cursor: pointer;
         transition: color 0.3s;
       }
-
       .dropdown-button:hover {
         color: #ff9800;
       }
-
       .dropdown-content {
         display: none;
         position: absolute;
@@ -101,7 +87,6 @@
         z-index: 1;
         border-radius: 5px;
       }
-
       .dropdown-content a {
         color: black;
         padding: 10px 15px;
@@ -109,11 +94,9 @@
         display: block;
         font-size: 14px;
       }
-
       .dropdown-content a:hover {
         background-color: #f1f1f1;
       }
-
       .dropdown:hover .dropdown-content {
         display: block;
       }
@@ -133,67 +116,50 @@
       .row:nth-child(even) {
         background: linear-gradient(to bottom, #ffffff, #f5f5f5);
       }
-      .content-wrapper {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 24px;
-      }
+
+      /* Features Styles */
       .about-content {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 20px; /* Space between the image and features */
-        flex-wrap: wrap; /* Ensures responsiveness */
+        gap: 20px;
+        flex-wrap: wrap;
       }
       .dashboard-image {
-        flex: 1; /* Image takes up equal space */
-        max-width: 100%; /* Ensures the image doesn't overflow */
-        height: auto; /* Maintains aspect ratio */
+        flex: 1;
+        max-width: 100%;
+        height: auto;
       }
-      .about-content {
-        display: flex;
-        align-items: center; /* Vertically align the image and text */
-        justify-content: space-between; /* Add space between the image and text */
-        gap: 20px; /* Add spacing between the image and text */
-        flex-wrap: wrap; /* Ensure responsiveness on smaller screens */
-      }
-
       .about-image {
-        flex: 1; /* Allow the image to take up equal space */
-        max-width: 50%; /* Limit the image width to 50% of the container */
-        text-align: center; /* Center the image horizontally */
+        flex: 1;
+        max-width: 50%;
+        text-align: center;
       }
-
       .about-image img {
-        width: 100%; /* Make the image responsive */
-        height: auto; /* Maintain the aspect ratio */
-        max-width: 500px; /* Limit the maximum width of the image */
+        width: 100%;
+        height: auto;
+        max-width: 500px;
       }
-
       .features {
-        flex: 1; /* Allow the text to take up equal space */
-        max-width: 50%; /* Limit the text width to 50% of the container */
+        flex: 1;
+        max-width: 50%;
       }
-
       .feature {
         display: flex;
-        align-items: flex-start; /* Align the icon and text at the top */
-        gap: 15px; /* Add spacing between the icon and text */
-        margin-bottom: 24px; /* Add spacing between features */
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 24px;
       }
-
       .feature img {
-        width: 50px; /* Adjust the size of the icons */
+        width: 50px;
         height: 50px;
       }
-
       .feature h4 {
         margin: 0;
         font-size: 21.6px;
       }
-
       .feature p {
-        margin: 8px 0 0; /* Add spacing between the heading and paragraph */
+        margin: 8px 0 0;
         font-size: 16px;
       }
       h1 {
@@ -202,6 +168,8 @@
       p {
         font-size: 18px;
       }
+
+      /* Reviews Styles */
       .review-boxes {
         display: flex;
         justify-content: center;
@@ -218,7 +186,7 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
       .review-box img.stars {
-        width: 100px; /* Adjust the size of the stars */
+        width: 100px;
         height: auto;
         margin-bottom: 10px;
       }
@@ -226,25 +194,27 @@
         margin: 8px 0;
         font-size: 16px;
       }
+
+      /* Header Row */
       .header-row {
         width: 100%;
-        max-width: 1440px; /* Matches the navbar width */
-        background-color: #1c284c; /* Header background color */
-        color: white; /* Text color for contrast */
-        padding: 8.64px 21.6px; /* Matches the navbar padding */
-        margin: 0 auto; /* Centers the row */
-        display: flex; /* Use flexbox for alignment */
-        align-items: center; /* Vertically align items */
-        justify-content: space-between; /* Space between logo and text */
+        max-width: 1440px;
+        background-color: #1c284c;
+        color: white;
+        padding: 8.64px 21.6px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
       .header-row .logo {
         display: flex;
-        align-items: center; /* Vertically align the logo */
+        align-items: center;
       }
       .header-row .logo img {
-        width: 162px; /* Matches the navbar logo size */
+        width: 162px;
         height: auto;
-        margin-right: 20px; /* Add spacing between logo and text */
+        margin-right: 20px;
         image-rendering: auto;
       }
       .header-content {
@@ -257,17 +227,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px; /* Space between text and button */
+        gap: 15px;
       }
       .header-row p {
         margin: 0;
-        font-size: 16px; /* Adjust font size */
-        text-align: left; /* Align text to the left */
+        font-size: 16px;
+        text-align: left;
       }
       .sign-up-button {
-        background-color: transparent; /* Transparent background */
-        color: #e68900; /* Text color */
-        border: 2px solid #e68900; /* Outline color */
+        background-color: transparent;
+        color: #e68900;
+        border: 2px solid #e68900;
         border-radius: 10px;
         padding: 10px 20px;
         font-size: 16px;
@@ -276,9 +246,11 @@
         white-space: nowrap;
       }
       .sign-up-button:hover {
-        background-color: #e68900; /* Add background color on hover */
-        color: white; /* Change text color on hover */
+        background-color: #e68900;
+        color: white;
       }
+
+      /* Price Styles */
       .toggle-container {
         display: flex;
         justify-content: center;
@@ -308,13 +280,13 @@
         color: black;
       }
       .per-month {
-        color: grey; /* Grey color for "/month" */
+        color: grey;
         font-size: 16px;
       }
       .billing-note {
         font-size: 14px;
         color: grey;
-        margin-top: -10px; /* Adjust spacing */
+        margin-top: -10px;
       }
       .pricing-boxes {
         display: flex;
@@ -333,8 +305,8 @@
         flex-direction: column;
         justify-content: space-between;
         height: 300px;
-        opacity: 1; /* Default opacity */
-        transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
       }
       .pricing-box h2 {
         margin: 0 0 10px;
@@ -360,91 +332,40 @@
       .select-plan-button:hover {
         background-color: #e68900;
       }
+
       /* Modal Background */
       .modal {
-        display: none; /* Hidden by default */
+        display: none;
         position: fixed;
-        z-index: 1000; /* Ensure it appears above other content */
+        z-index: 1000;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        background-color: rgba(0, 0, 0, 0.5);
       }
 
       /* Modal Content */
       .modal-content {
         background-color: white;
-        margin: 15% auto; /* Center the modal vertically and horizontally */
+        margin: 15% auto;
         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 10px;
         width: 80%;
-        max-width: 400px; /* Limit the modal width */
+        max-width: 400px;
         text-align: center;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
-      /* Close Button */
-      .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      .close-button:hover,
-      .close-button:focus {
-        color: black;
-        text-decoration: none;
-      }
-
-      /* Form Styles */
-      .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-      }
-
-      .form-group label {
-        display: block;
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-
-      .form-group input,
-      .form-group select {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-
-      .submit-button {
-        background-color: #1c284c;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .submit-button:hover {
-        background-color: #e68900;
-      }
+      /* Social/Newsletter Styles */
       .social-media {
         display: flex;
         justify-content: center;
         gap: 15px;
         margin-top: 10px;
       }
-
       .social-icon {
         display: inline-block;
         width: 50px;
@@ -457,27 +378,18 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
         text-decoration: none;
       }
-
       .social-icon:hover {
         background-color: #e68900;
         transform: scale(1.2);
       }
-
-      .newsletter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
       .newsletter p {
-        text-align: center; /* Keep the text horizontal and centered */
-        margin: 0; /* Remove extra margins */
+        text-align: center;
+        margin: 0;
       }
-
       .social-icon img {
-        width: 47px; /* Size down the icon */
+        width: 47px;
         height: 47px;
-        filter: invert(1); /* Make the icon white for better contrast */
+        filter: invert(1);
       }
     </style>
   </head>
@@ -610,53 +522,53 @@
         </div>
       </div>
       <div id="price" class="row">
-      <div class="content-wrapper">
-        <h1>Choose Your Plan</h1>
-        <p>Find the perfect plan tailored to your needs and budget.</p>
-        <div class="toggle-container">
-          <button id="monthly-button" class="toggle-button active">
-            Pay Monthly
-          </button>
-          <button id="yearly-button" class="toggle-button">
-            Pay Yearly (Save 20%)
-          </button>
-        </div>
-        <div class="pricing-boxes">
-          <div class="pricing-box">
-            <h2>Basic</h2>
-            <p class="price" data-monthly="7.99" data-yearly="150.00">
-              <span class="main-price">$9.99</span>
-              <span class="per-month">/month</span>
-            </p>
-            <p class="billing-note">Billed monthly</p>
-            <p>Essential protection for individuals.</p>
-            <button class="select-plan-button">Select Plan</button>
+        <div class="content-wrapper">
+          <h1>Choose Your Plan</h1>
+          <p>Find the perfect plan tailored to your needs and budget.</p>
+          <div class="toggle-container">
+            <button id="monthly-button" class="toggle-button active">
+              Pay Monthly
+            </button>
+            <button id="yearly-button" class="toggle-button">
+              Pay Yearly (Save 20%)
+            </button>
           </div>
+          <div class="pricing-boxes">
+            <div class="pricing-box">
+              <h2>Basic</h2>
+              <p class="price" data-monthly="7.99" data-yearly="150.00">
+                <span class="main-price">$9.99</span>
+                <span class="per-month">/month</span>
+              </p>
+              <p class="billing-note">Billed monthly</p>
+              <p>Essential protection for individuals.</p>
+              <button class="select-plan-button">Select Plan</button>
+            </div>
 
-          <div class="pricing-box">
-            <h2>Standard</h2>
-            <p class="price" data-monthly="15.99" data-yearly="300.00">
-              <span class="main-price">$19.99</span>
-              <span class="per-month">/month</span>
-            </p>
-            <p class="billing-note">Billed monthly</p>
-            <p>Advanced security for small teams.</p>
-            <button class="select-plan-button">Select Plan</button>
-          </div>
+            <div class="pricing-box">
+              <h2>Standard</h2>
+              <p class="price" data-monthly="15.99" data-yearly="300.00">
+                <span class="main-price">$19.99</span>
+                <span class="per-month">/month</span>
+              </p>
+              <p class="billing-note">Billed monthly</p>
+              <p>Advanced security for small teams.</p>
+              <button class="select-plan-button">Select Plan</button>
+            </div>
 
-          <div class="pricing-box">
-            <h2>Premium</h2>
-            <p class="price" data-monthly="23.99" data-yearly="460.00">
-              <span class="main-price">$29.99</span>
-              <span class="per-month">/month</span>
-            </p>
-            <p class="billing-note">Billed monthly</p>
-            <p>Comprehensive protection for businesses.</p>
-            <button class="select-plan-button">Select Plan</button>
+            <div class="pricing-box">
+              <h2>Premium</h2>
+              <p class="price" data-monthly="23.99" data-yearly="460.00">
+                <span class="main-price">$29.99</span>
+                <span class="per-month">/month</span>
+              </p>
+              <p class="billing-note">Billed monthly</p>
+              <p>Comprehensive protection for businesses.</p>
+              <button class="select-plan-button">Select Plan</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="header-row">
       <div class="logo">
