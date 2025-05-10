@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baltic Shield</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Stack navbar and content vertically */
+        height: 100vh; /* Full viewport height */
+        background: linear-gradient(to bottom, #f5f5f5, #e0f7fa);
+        font-family: Helvetica, Arial, sans-serif; /* Added Helvetica font */
+        scroll-behavior: smooth;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+      }
+      body.fade-out {
+        opacity: 1; /* Fully visible */
+      }
+      .navbar {
+        width: 100%;
+        max-width: 1440px;
+        background-color: white;
+        padding: 6px 18px; /* Increased padding for a larger navbar */
+        position: sticky;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        margin: 0 auto;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        width: 140px; /* Increased logo size */
+        height: auto;
+        margin-right: 10px;
+      }
+
+      .logo-text {
+        font-size: 18px; /* Increased font size for the logo text */
+        font-weight: bold;
+        color: #1c284c;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex; /* Align items horizontally */
+        gap: 30px; /* Spacing between links */
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links li {
+        display: inline-block; /* Ensure items are inline */
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1c284c;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #e68900;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-button {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .dropdown-button:hover {
+        color: #ff9800;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 5px;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .wrapper {
+        text-align: center; /* Center the content inside the wrapper */
+        flex: 1; /* Allow the wrapper to take up the remaining space */
+        padding: 40px; /* Increased padding for better spacing */
+      }
+
+      .feature-table {
+        margin: 0 auto; /* Center the table horizontally */
+        width: 90%; /* Adjust table width */
+        font-size: 18px; /* Increased font size for table content */
+      }
+
+      .row {
+        padding: 48px 24px;
+        text-align: center;
+      }
+
+      .row:nth-child(odd) {
+        background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+      }
+
+      .row:nth-child(even) {
+        background: linear-gradient(to bottom, #c9e5fd, #e0f2ff);
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        display: inline-block;
+      }
+
+      ul li {
+        margin: 10px 0;
+        font-size: 18px;
+      }
+
+      a {
+        color: #1c284c;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #e68900;
+      }
+
+      .icon {
+        width: 30px; /* Increased the size of the icons */
+        height: 30px;
+        vertical-align: middle; /* Align icons with text */
+      }
+
+      table {
+        width: 100%; /* Make the table take full width */
+        border: 2px solid black; /* Add a border around the table */
+        border-collapse: collapse; /* Collapse borders for a clean look */
+      }
+
+      th,
+      td {
+        border: 1px solid black; /* Add borders to table cells */
+        padding: 15px; /* Increased padding for better readability */
+        text-align: center; /* Center-align text and icons */
+      }
+
+      th {
+        background: linear-gradient(
+          to bottom,
+          #c9e5fd,
+          #e0f2ff
+        ); /* Gradient for odd rows */
+        color: black; /* White text for the header */
+        font-size: 20px; /* Increased font size for header text */
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9; /* Add alternating row colors */
+      }
+
+      tr:nth-child(odd) {
+        background-color: #ffffff; /* White background for odd rows */
+      }
+      .white-box {
+        background-color: white; /* White background */
+        padding: 20px; /* Add padding inside the box */
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        max-width: 800px; /* Limit the width of the box */
+        margin: 0 auto; /* Center the box horizontally */
+        text-align: left; /* Align text to the left */
+      }
+      .payment-panel {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+      .payment-container {
+        display: flex;
+        gap: 50px; /* Space between the plan box and payment form */
+        justify-content: center; /* Center the payment container */
+        align-items: flex-start; /* Align items at the top */
+        flex-wrap: wrap; /* Ensure responsiveness for smaller screens */
+        margin-top: 35px; /* Add spacing between the header and the container */
+      }
+
+      .plan-box,
+      .payment-panel {
+        flex: 1; /* Allow both elements to take up equal space */
+        max-width: 400px; /* Limit the width of each box */
+      }
+
+      .plan-box {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-left: 350px;
+        margin-right: -200px;
+        text-align: left;
+      }
+
+      .payment-panel {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      .plan-box h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      .plan-box select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .price-details p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .price-details strong {
+        font-size: 18px;
+      }
+      .pay-button {
+        background-color: #1c284c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+      }
+
+      .pay-button:hover {
+        background-color: #e68900;
+      }
+      /* Modal Background */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000; /* Ensure it appears above other content */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        background-color: white;
+        margin: 15% auto; /* Center the modal vertically and horizontally */
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 400px; /* Limit the modal width */
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Close Button */
+      .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+      }
+
+      /* Modal OK Button */
+      #modal-ok-button {
+        margin-top: 20px;
+        background-color: #1c284c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #modal-ok-button:hover {
+        background-color: #e68900;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <a href="index.html#introduction"
+          ><img src="shield.svg" alt="Logo" /> </a
+        ><span class="logo-text">Shield your success</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li class="dropdown">
+          <a href="#price" class="dropdown-button">Price</a>
+          <div class="dropdown-content">
+            <a href="pricing.html#comparison-table">Feature Comparison</a>
+            <a href="index.html#price">Plan Cost</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrapper">
+      <!-- Feature Comparison Section -->
+      <div id="comparison-table" class="row">
+        <h2>Feature Comparison</h2>
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Features</th>
+              <th>
+                Basic <br />
+                <span id="basic-price"></span>
+              </th>
+              <th>
+                Standard <br />
+                <span id="standard-price"></span>
+              </th>
+              <th>
+                Premium <br />
+                <span id="premium-price"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Malware Protection</td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+            <tr>
+              <td>Real-Time Scanning</td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+            <tr>
+              <td>Email Support</td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+            <tr>
+              <td>Priority Support</td>
+              <td><img src="cross.svg" alt="Cross" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+            <tr>
+              <td>Team Management Tools</td>
+              <td><img src="cross.svg" alt="Cross" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+            <tr>
+              <td>Enterprise-Grade Security</td>
+              <td><img src="cross.svg" alt="Cross" class="icon" /></td>
+              <td><img src="cross.svg" alt="Cross" class="icon" /></td>
+              <td><img src="checkmark.svg" alt="Checkmark" class="icon" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- System Requirements Section -->
+      <div class="row">
+        <h2>System Requirements</h2>
+        <div class="white-box">
+          <p>
+            To use Baltic Shield, ensure your system meets the following
+            requirements:
+          </p>
+          <ul>
+            <li>Operating System: Windows 10 or macOS 11+</li>
+            <li>Processor: Intel i3 or equivalent</li>
+            <li>Memory: 4GB RAM or more</li>
+            <li>Storage: 500MB of free disk space</li>
+            <li>Internet Connection: Required for updates and activation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2>Payment</h2>
+        <div class="payment-container">
+          <!-- Plan Selection Box -->
+          <div class="plan-box">
+            <h3>Select Your Plan</h3>
+            <select id="plan-select">
+              <option value="basic">Basic</option>
+              <option value="standard">Standard</option>
+              <option value="premium">Premium</option>
+            </select>
+            <div class="price-details">
+              <p id="selected-plan-price">Price: $9.99</p>
+              <p>Taxes (21%): $1.00</p>
+              <p><strong>Total: $10.99</strong></p>
+            </div>
+          </div>
+
+          <!-- Payment Form -->
+          <div class="payment-panel">
+            <form id="payment-form">
+              <div class="form-group">
+                <label for="email-address">Email Address</label>
+                <input
+                  type="email"
+                  id="email-address"
+                  name="email-address"
+                  placeholder="example@example.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cardholder-name">Cardholder Name</label>
+                <input
+                  type="text"
+                  id="cardholder-name"
+                  name="cardholder-name"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input
+                  type="text"
+                  id="card-number"
+                  name="card-number"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiration-date">Expiration Date</label>
+                  <input
+                    type="text"
+                    id="expiration-date"
+                    name="expiration-date"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    name="cvv"
+                    placeholder="123"
+                    maxlength="3"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" class="pay-button">Pay Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal for Payment Confirmation -->
+    <div id="payment-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <p id="modal-message"></p>
+        <button id="modal-ok-button" class="pay-button">OK</button>
+      </div>
+      <script>
+        // Define the monthly and yearly prices for each plan
+        const prices = {
+          monthly: {
+            basic: "$9.99/month",
+            standard: "$19.99/month",
+            premium: "$29.99/month",
+          },
+          yearly: {
+            basic: "$7.99/month (billed yearly)",
+            standard: "$15.99/month (billed yearly)",
+            premium: "$23.99/month (billed yearly)",
+          },
+        };
+
+        // Get the selected plan and billing option from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedPlan = urlParams.get("plan") || "basic"; // Default to "basic" if no plan is selected
+        const selectedBilling = urlParams.get("billing") || "monthly"; // Default to "monthly" if no billing option is selected
+
+        // Update the prices in the feature comparison table
+        document.getElementById("basic-price").textContent =
+          prices[selectedBilling].basic;
+        document.getElementById("standard-price").textContent =
+          prices[selectedBilling].standard;
+        document.getElementById("premium-price").textContent =
+          prices[selectedBilling].premium;
+
+        // Pre-select the correct plan in the dropdown
+        document.getElementById("plan-select").value = selectedPlan;
+
+        // Define the base prices for the plan selection box
+        const planPrices = {
+          basic: 9.99,
+          standard: 19.99,
+          premium: 29.99,
+        };
+
+        const taxRate = 0.21; // 21% tax
+
+        // Update price details dynamically when the plan is selected
+        function updatePriceDetails(plan) {
+          const planPrice = planPrices[plan];
+          const tax = (planPrice * taxRate).toFixed(2);
+          const total = (planPrice + parseFloat(tax)).toFixed(2);
+
+          document.getElementById(
+            "selected-plan-price"
+          ).textContent = `Price: $${planPrice.toFixed(2)}`;
+          document.querySelector(
+            ".price-details p:nth-child(2)"
+          ).textContent = `Taxes (21%): $${tax}`;
+          document.querySelector(
+            ".price-details p:nth-child(3)"
+          ).innerHTML = `<strong>Total: $${total}</strong>`;
+        }
+
+        // Update price details for the pre-selected plan
+        updatePriceDetails(selectedPlan);
+
+        // Update price details dynamically when the plan is selected
+        document
+          .getElementById("plan-select")
+          .addEventListener("change", function () {
+            updatePriceDetails(this.value);
+          });
+
+        // Handle form submission
+        document
+          .getElementById("payment-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get the user's email address from the form
+            const email = document.getElementById("email-address").value;
+
+            // Clear all form fields
+            document.getElementById("payment-form").reset();
+
+            // Show the modal with the confirmation message
+            const modal = document.getElementById("payment-modal");
+            const modalMessage = document.getElementById("modal-message");
+            modalMessage.textContent = `Payment received for the selected plan! An invoice has been sent to your email at ${email}.`;
+            modal.style.display = "block";
+          });
+
+        // Close the modal when the close button or OK button is clicked
+        document
+          .querySelector(".close-button")
+          .addEventListener("click", function () {
+            document.getElementById("payment-modal").style.display = "none";
+          });
+
+        document
+          .getElementById("modal-ok-button")
+          .addEventListener("click", function () {
+            document.getElementById("payment-modal").style.display = "none";
+          });
+
+        // Close the modal if the user clicks outside the modal content
+        window.addEventListener("click", function (e) {
+          const modal = document.getElementById("payment-modal");
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+        // Add a fade-out effect when navigating to a new page
+        document.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+
+            // Check if the link is an external link or an anchor link
+            if (
+              href &&
+              !href.startsWith("#") &&
+              !href.startsWith("javascript:")
+            ) {
+              e.preventDefault(); // Prevent default navigation
+              document.body.style.transition = "opacity 0.5s ease-in-out"; // Add smooth transition
+              document.body.style.opacity = "0"; // Trigger fade-out effect
+
+              // Wait for the fade-out effect to complete, then navigate
+              setTimeout(() => {
+                window.location.href = href;
+              }, 500); // Match the transition duration (0.5s)
+            }
+          });
+        });
+
+        // Add a fade-in effect when the page loads
+        window.addEventListener("load", () => {
+          document.body.style.transition = "opacity 0.5s ease-in-out"; // Add smooth transition
+          document.body.style.opacity = "1"; // Trigger fade-in effect
+        });
+      </script>
+    </div>
+  </body>
+</html>
