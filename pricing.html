@@ -39,17 +39,15 @@
         display: flex;
         align-items: center;
       }
-
+      .logo-text {
+        font-size: 18px; 
+        font-weight: bold;
+        color: #0d3ecc; 
+      }
       .logo img {
         width: 140px;
         height: auto;
         margin-right: 10px;
-      }
-
-      .logo-text {
-        font-size: 18px;
-        font-weight: bold;
-        color: #1c284c;
       }
 
       .nav-links {
@@ -379,6 +377,129 @@
       #modal-ok-button:hover {
         background-color: #e68900;
       }
+      /* Newsletter */
+      .header-row {
+        width: 180vh;
+        max-width: 1440px;
+        background-color: #1c284c;
+        color: white;
+        padding: 6px 18px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header-row .logo {
+        display: flex;
+        align-items: center;
+      }
+      .header-row .logo img {
+        width: 162px;
+        height: auto;
+        margin-right: 20px;
+        image-rendering: auto;
+      }
+      .header-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      .header-row p {
+        margin: 0;
+        font-size: 16px;
+        text-align: left;
+      }
+      .sign-up-button {
+        background-color: transparent;
+        color: #e68900;
+        border: 2px solid #e68900;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        white-space: nowrap;
+      }
+      .sign-up-button:hover {
+        background-color: #e68900;
+        color: white;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .submit-button {
+        background-color: #1c284c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-button:hover {
+        background-color: #e68900;
+      }
+
+      /* Social media  */
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .social-icon {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: #1c284c;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        text-decoration: none;
+      }
+      .social-icon:hover {
+        background-color: #e68900;
+        transform: scale(1.2);
+      }
+      .newsletter p {
+        text-align: center;
+        margin: 0;
+      }
+      .social-icon img {
+        width: 47px;
+        height: 47px;
+        filter: invert(1);
+      }
     </style>
   </head>
   <body>
@@ -563,7 +684,72 @@
           </div>
         </div>
       </div>
+    </div> <!-- End of Wrapper -->
+    <div class="header-row">
+      <div class="logo">
+        <img src="shield-white.svg" alt="Logo" />
+      </div>
+      <p>Choose Baltic Shield - Your Trusted Cybersecurity Partner</p>
+      <br />
+      <p>
+        Want to stay informed on the latest changes in cybersecurity? <br />
+        Sign up for our newsletter and learn how to protect your computer from
+        upcoming threats.
+      </p>
+      <div class="newsletter">
+        <button class="sign-up-button">Sign Up</button>
+
+        <!-- Social Media Icons -->
+        <div class="social-media">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="instagram.svg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            class="social-icon"
+          >
+            <img src="linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://www.twitter.com" target="_blank" class="social-icon">
+            <img src="twitter.svg" alt="Twitter" />
+          </a>
+        </div>
+      </div>
     </div>
+     <!-- Newsletter Modal -->
+  <div id="newsletter-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Sign Up for Our Newsletter</h2>
+      <form id="newsletter-form">
+        <div class="form-group">
+          <label for="newsletter-email">Email Address</label>
+          <input
+            type="email"
+            id="newsletter-email"
+            name="newsletter-email"
+            placeholder="example@example.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="news-type">What type of news would you like?</label>
+          <select id="news-type" name="news-type" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="cybersecurity">Cybersecurity Updates</option>
+            <option value="product">Product Announcements</option>
+            <option value="offers">Special Offers</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-button">Subscribe</button>
+      </form>
+    </div>
+  </div>
     <!-- Modal for Payment Confirmation -->
     <div id="payment-modal" class="modal">
       <div class="modal-content">
@@ -571,6 +757,8 @@
         <p id="modal-message"></p>
         <button id="modal-ok-button" class="pay-button">OK</button>
       </div>
+      
+    </div>
       <script>
         // Define the monthly and yearly prices for each plan
         const prices = {
@@ -718,6 +906,44 @@
           document.body.style.transition = "opacity 0.5s ease-in-out"; // Add smooth transition
           document.body.style.opacity = "1"; // Trigger fade-in effect
         });
+        // Get modal elements
+      const modal = document.getElementById("newsletter-modal");
+      const closeButton = document.querySelector(".close-button");
+      const signUpButton = document.querySelector(".sign-up-button");
+      const newsletterForm = document.getElementById("newsletter-form");
+
+      // Show the modal when the "Sign Up" button is clicked
+      signUpButton.addEventListener("click", () => {
+        modal.style.display = "block";
+      });
+
+      // Close the modal when the "X" button is clicked
+      closeButton.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // Close the modal if the user clicks outside the modal content
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Handle form submission
+      newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        const email = document.getElementById("newsletter-email").value;
+        const newsType = document.getElementById("news-type").value;
+
+        alert(
+          `Thank you for subscribing! You will receive ${newsType} updates at ${email}.`
+        );
+
+        // Clear the form and close the modal
+        newsletterForm.reset();
+        modal.style.display = "none";
+      });
       </script>
     </div>
   </body>
